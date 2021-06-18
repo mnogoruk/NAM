@@ -23,7 +23,7 @@ class MarkovAlgorithm:
             if not step:
                 end = True
             step = False
-        return string.replace('~', '')
+        return string.replace('\b', '')
 
     def step(self, string: str, rule):
         return string.replace(rule[0], rule[1], 1)
@@ -48,7 +48,9 @@ class MarkovAlgorithm:
 def main():
     rules = "*a->aA* *b->bB* *-># Aa->aA Ab->bA Ba->aB Bb->bB A#->#a B#->#b #=> ->*".split(' ')
     ma = MarkovAlgorithm(*rules)
-    print(ma.execute("abbba"))
+    string = 'abbba'
+    print("input string:", string)
+    print("output string:", ma.execute("abbba"))
 
 
 if __name__ == '__main__':
